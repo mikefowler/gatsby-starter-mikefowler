@@ -7,9 +7,10 @@
 
 import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { Global, css } from '@emotion/core';
 
 import Header from './Header';
-import './Layout.css';
+import styles from '../styles.css.js';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -44,6 +45,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
+      <Global
+        styles={css`
+          ${styles}
+        `}
+      />
     </>
   );
 };
