@@ -16,11 +16,6 @@ const makeGlobalStyles: MakeGlobalStylesFn = () => css`
     padding: 0;
     margin: 0;
     min-height: 100%;
-    font-family: "Cabin", Helvetica, Arial, sans-serif;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: "Roboto Condensed";
   }
 `;
 

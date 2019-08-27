@@ -28,16 +28,16 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
+    /**
+     * Adds support for Typography.js
+     * @see https://www.gatsbyjs.org/docs/typography-js/
+     */
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: `gatsby-plugin-typography`,
       options: {
-        // https://fonts.google.com/
-        fonts: [
-          `Roboto+Condensed\:700`,
-          `Cabin`
-        ],
-        display: 'swap'
-      }
+        pathToConfigModule: 'src/config/typography',
+        omitGoogleFont: true,
+      },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
