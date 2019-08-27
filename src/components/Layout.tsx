@@ -7,10 +7,11 @@
 
 import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Global, css } from '@emotion/core';
+import { ThemeProvider } from 'emotion-theming';
 
 import Header from './Header';
-import styles from '../styles.css.js';
+import GlobalStyles from './GlobalStyles';
+import theme from '../theme';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -28,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   `);
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -45,12 +46,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-      <Global
-        styles={css`
-          ${styles}
-        `}
-      />
-    </>
+
+      <GlobalStyles />
+    </ThemeProvider>
   );
 };
 
