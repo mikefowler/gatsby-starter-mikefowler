@@ -27,6 +27,7 @@
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
+    "reflexbox": "^4.0.5",
     "typeface-cabin": "^0.0.72",
     "typeface-roboto-condensed": "^0.0.75",
     "typescript": "^3.5.3",
@@ -37,6 +38,7 @@
     "@graphql-codegen/typescript": "^1.6.1",
     "@graphql-codegen/typescript-operations": "^1.6.1",
     "@types/typography": "^0.16.2",
+    "csstype": "^2.6.6",
     "prettier": "^1.18.2"
   },
   "keywords": [

@@ -14,6 +14,7 @@ import Header from './Header';
 import GlobalStyles from './GlobalStyles';
 import theme from '../theme';
 import { GetSiteTitleQuery } from '../__generated__/graphqlTypes';
+import { Box } from 'reflexbox';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -34,22 +35,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header siteTitle={title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
-      >
+      <Header siteTitle={title!} />
+
+      <Box marginX="auto" maxWidth={960} paddingX={3} paddingBottom={4}>
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
-      </div>
+      </Box>
 
       <GlobalStyles />
     </ThemeProvider>
