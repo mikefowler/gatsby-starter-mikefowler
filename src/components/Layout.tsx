@@ -8,18 +8,20 @@
 import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'emotion-theming';
+import idx from 'idx.macro';
 
 import Header from './Header';
 import GlobalStyles from './GlobalStyles';
 import theme from '../theme';
+import { GetSiteTitleQuery } from '../__generated__/graphqlTypes';
 
 export interface LayoutProps {
   children: ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+  const data = useStaticQuery<GetSiteTitleQuery>(graphql`
+    query GetSiteTitle {
       site {
         siteMetadata {
           title
@@ -28,9 +30,11 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     }
   `);
 
+  const title = idx(data, (_) => _.site.siteMetadata.title);
+
   return (
     <ThemeProvider theme={theme}>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={title} />
       <div
         style={{
           margin: `0 auto`,
