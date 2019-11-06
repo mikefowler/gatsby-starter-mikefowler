@@ -7,14 +7,14 @@
 
 import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { ThemeProvider } from 'emotion-theming';
+import { ThemeProvider } from 'styled-components';
 import idx from 'idx.macro';
+import { Box } from 'rebass/styled-components';
 
 import Header from './Header';
 import GlobalStyles from './GlobalStyles';
 import theme from '../theme';
 import { GetSiteTitleQuery } from '../__generated__/graphqlTypes';
-import { Box } from 'reflexbox';
 
 export interface LayoutProps {
   children: ReactNode;
@@ -35,18 +35,20 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Header siteTitle={title!} />
+      <>
+        <Header siteTitle={title!} />
 
-      <Box marginX="auto" maxWidth={960} paddingX={3} paddingBottom={4}>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </Box>
+        <Box mx="auto" px={3} pb={4} maxWidth={960}>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </Box>
 
-      <GlobalStyles />
+        <GlobalStyles />
+      </>
     </ThemeProvider>
   );
 };

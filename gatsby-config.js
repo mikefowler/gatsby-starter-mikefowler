@@ -28,6 +28,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
+    'gatsby-plugin-styled-components',
     /**
      * Adds support for Typography.js
      * @see https://www.gatsbyjs.org/docs/typography-js/
@@ -38,7 +39,7 @@ module.exports = {
         pathToConfigModule: 'src/config/typography',
         omitGoogleFont: true,
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

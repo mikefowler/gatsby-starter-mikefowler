@@ -1,15 +1,10 @@
-import React from 'react';
-import css, { SerializedStyles } from '@emotion/css';
-import { Global } from '@emotion/core';
-import emotionNormalize from 'emotion-normalize';
-import { withTheme } from 'emotion-theming';
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'styled-normalize';
 
 import { Theme } from '../theme';
 
-type MakeGlobalStylesFn = (theme: Theme) => SerializedStyles;
-
-const makeGlobalStyles: MakeGlobalStylesFn = () => css`
-  ${emotionNormalize}
+const GlobalStyles = createGlobalStyle<{ theme: Theme }>`
+  ${normalize}
 
   html,
   body {
@@ -18,7 +13,5 @@ const makeGlobalStyles: MakeGlobalStylesFn = () => css`
     min-height: 100%;
   }
 `;
-
-const GlobalStyles = withTheme(({ theme }) => <Global styles={makeGlobalStyles(theme)} />);
 
 export default GlobalStyles;
