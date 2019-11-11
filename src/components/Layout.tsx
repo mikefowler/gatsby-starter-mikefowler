@@ -9,12 +9,12 @@ import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 import idx from 'idx.macro';
-import { Box } from 'rebass/styled-components';
 
 import Header from './Header';
 import GlobalStyles from './GlobalStyles';
 import theme from '../theme';
 import { GetSiteTitleQuery } from '../__generated__/graphqlTypes';
+import Box from './Box';
 
 export interface LayoutProps {
   children: ReactNode;
