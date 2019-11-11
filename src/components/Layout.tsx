@@ -12,7 +12,7 @@ import idx from 'idx.macro';
 
 import Header from './Header';
 import GlobalStyles from './GlobalStyles';
-import theme from '../theme';
+import theme from '../config/theme';
 import { GetSiteTitleQuery } from '../__generated__/graphqlTypes';
 import Box from './Box';
 
