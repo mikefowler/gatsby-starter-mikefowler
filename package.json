@@ -21,6 +21,7 @@
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-sharp": "^2.2.6",
     "idx.macro": "^4.0.0",
+    "nullthrows": "^1.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",
@@ -44,8 +45,10 @@
     "@types/styled-system__css": "^5.0.4",
     "@types/styled-system__should-forward-prop": "^5.1.0",
     "@types/typography": "^0.16.2",
+    "concurrently": "^5.0.0",
     "csstype": "^2.6.6",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "wait-on": "^3.3.0"
   },
   "keywords": [
     "gatsby"
@@ -55,10 +58,10 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "concurrently -n gatsby,types \"yarn run develop\" \"yarn generate --watch\"",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "generate": "graphql-codegen"
+    "generate": "wait-on http://localhost:8000/ && graphql-codegen"
   },
   "repository": {
     "type": "git",

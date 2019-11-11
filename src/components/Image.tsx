@@ -1,6 +1,10 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import nullthrows from 'nullthrows';
+import idx from 'idx.macro';
+
+import { GetImageQuery } from '../__generated__/graphqlTypes';
 
 /*
  * This component is built using `gatsby-image` to automatically serve optimized
@@ -14,8 +18,8 @@ import Img from 'gatsby-image';
  */
 
 const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
+  const data = useStaticQuery<GetImageQuery>(graphql`
+    query GetImage {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
@@ -26,7 +30,9 @@ const Image = () => {
     }
   `);
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />;
+  const image = nullthrows(idx(data, (_) => _.placeholderImage.childImageSharp.fluid));
+
+  return <Img fluid={image} />;
 };
 
 export default Image;

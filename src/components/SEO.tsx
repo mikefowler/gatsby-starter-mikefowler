@@ -8,6 +8,10 @@
 import React from 'react';
 import Helmet, { HelmetProps } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import nullthrows from 'nullthrows';
+import idx from 'idx.macro';
+
+import { GetSeoQuery } from '../__generated__/graphqlTypes';
 
 export interface SEOProps {
   description?: string;
@@ -17,9 +21,9 @@ export interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({ description = '', lang = 'en', meta = [], title }) => {
-  const { site } = useStaticQuery(
+  const data = useStaticQuery<GetSeoQuery>(
     graphql`
-      query {
+      query GetSEO {
         site {
           siteMetadata {
             title
@@ -30,6 +34,8 @@ const SEO: React.FC<SEOProps> = ({ description = '', lang = 'en', meta = [], tit
       }
     `,
   );
+
+  const site = nullthrows(idx(data, (_) => _.site));
 
   const metaDescription = description || site.siteMetadata.description;
 
